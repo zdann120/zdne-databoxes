@@ -5,7 +5,7 @@ module ZdneDataboxes
     def initialize(box_id)
       @box_id = box_id
       @conn = Faraday.new(url: 'https://data.zchry.cc/api/v1') do |f|
-        f.response :logger
+        #f.response :logger
         f.adapter  Faraday.default_adapter
         f.response :json, :content_type => /\bjson$/
       end
@@ -25,7 +25,11 @@ module ZdneDataboxes
     end
 
     def delete(identifier)
-      @conn.delete "boxes/#{@box_id}/data/#{identifier}"
+      @conn.delete("boxes/#{@box_id}/data/#{identifier}")
+    end
+
+    def all
+      @conn.get("boxes/#{@box_id}").body
     end
   end
 end
