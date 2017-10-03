@@ -4,7 +4,7 @@ module ZdneDataboxes
   class Client
     def initialize(box_id)
       @box_id = box_id
-      @conn = Faraday.new(url: 'https://zdne-databoxes.herokuapp.com/api/v1') do |f|
+      @conn = Faraday.new(url: 'https://data.zchry.cc/api/v1') do |f|
         f.response :logger
         f.adapter  Faraday.default_adapter
         f.response :json, :content_type => /\bjson$/
