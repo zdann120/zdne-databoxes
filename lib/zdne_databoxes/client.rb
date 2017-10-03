@@ -31,5 +31,9 @@ module ZdneDataboxes
     def all
       @conn.get("boxes/#{@box_id}").body
     end
+
+    def all_keys
+      @conn.get("boxes/#{@box_id}/keys").body
+    end
   end
 end
